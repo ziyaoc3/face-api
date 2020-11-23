@@ -21,18 +21,18 @@ const db = knex({
 	}
 });
 
-app.get('/', (req, res)=> { res.send(db.users) });
+app.get('/', (req, res)=> { res.send(db.users) })
 
-app.post('/signin', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)} );
+app.post('/signin', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)} )
 
-app.post ('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)} );
+app.post ('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 
-app.get('/profile/:id', (req, res) => {profile.handleProfile(req, res, db)} );
+app.get('/profile/:id', (req, res) => {profile.handleProfile(req, res, db)} )
 
-app.put('/image', (req, res) => {image.handleImage(req, res, db)} );
-app.post('/imageURL', (req, res) => {image.handleApp(req, res)} );
+app.put('/image', (req, res) => {image.handleImage(req, res, db)} )
+app.post('/imageURL', (req, res) => {image.handleApp(req, res)} )
 	
 
 app.listen(process.env.PORT || 3000 , () => {
 	console.log (`it is working at ${process.env.PORT}`);
-});
+})
