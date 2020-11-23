@@ -4,6 +4,7 @@ const app = express();
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
+
 const register = require('./component/register.js');
 const signIn = require('./component/signin.js');
 const profile = require('./component/profile.js');
@@ -13,9 +14,11 @@ app.use(express.json());
 app.use (cors());
 
 const db = knex({
-  	client: 'pg',
+	client: 'pg',
 	connectionString: process.env.DATABASE_URL,
-	ssl: true
+	ssl: {
+		rejectUnauthorized: false
+	}
 });
 
 app.get('/', (req, res)=> { res.send(db.users) });
