@@ -1,4 +1,5 @@
 const handleRegister = (req, res, db, bcrypt) => {
+	
 	const {email, name, password} =req.body;
 	if (!email ||!name ||!password){
 		res.status(400).json('incorrect to submit!')
@@ -11,12 +12,11 @@ const handleRegister = (req, res, db, bcrypt) => {
 			})
 		.into ('login')
 		.transacting(trx)
-		.returning ('email', 'id')
-		.then((loginEmail, loginId) => {
+		.returning ('email')
+		.then((loginEmail) => {
 			return trx('users')
 				.returning('*')
 				.insert({
-					id : loginId,
 					email: loginEmail[0],
 					name: name,
 					joined: new Date()
