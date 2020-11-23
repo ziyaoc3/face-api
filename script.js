@@ -12,7 +12,9 @@ const image = require('./component/image.js');
 app.use(express.json());
 app.use (cors());
 
-
+app.get('/', (req, res)=> {
+  res.send('it is working now');
+})
 
 const db = knex({
   	client: 'pg',
