@@ -11,7 +11,7 @@ const handleApp = (req, res) => {
 			.catch(err => res.status (400).json('unable to get image'))
 };
 	 
-const handleImage = (req, res,db)=> {
+const handleImage = (req, res, db)=> {
 	const {id } =req.body;
 	db('users')
 		.where('id', '=', id)
