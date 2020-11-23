@@ -22,4 +22,4 @@ const handleImage = (req, res,db)=> {
 	
 };
 
-module.exports = {handleImage, handleApp};
+module.exports = {handleImage: handleImage, handleApp: handleApp};

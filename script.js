@@ -12,16 +12,13 @@ const image = require('./component/image.js');
 app.use(express.json());
 app.use (cors());
 
-app.get('/', (req, res)=> {
-  res.send('it is working now');
-})
-
 const db = knex({
   	client: 'pg',
 	connectionString: process.env.DATABASE_URL,
 	ssl: true
 });
 
+app.get('/', (req, res)=> { res.send(db.users) });
 
 app.post('/signin', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)} );
 
